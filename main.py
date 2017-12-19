@@ -6,7 +6,7 @@ import torch
 from torch.autograd import Variable
 from torchvision import datasets, transforms
 
-import LeNet
+import model
 # webapp
 app = Flask(__name__)
 
@@ -36,7 +36,7 @@ def predict_with_pretrain_model(sample,model):
 
 @app.route('/api/mnist', methods=['POST'])
 def mnist():
-    model = LeNet.Net()
+    model = model.Net()
     model.load_state_dict(torch.load('./results/model.pt'))
     input = ((numpy.array(request.json, dtype=numpy.uint8))).reshape(28, 28)
     output = predict_with_pretrain_model(input,model)
