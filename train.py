@@ -6,7 +6,7 @@ import torch.optim as optim
 from torch.autograd import Variable
 import torch.nn.functional as F
 
-import LeNet
+import model
 
 
 # Training settings
@@ -93,7 +93,7 @@ test_loader = torch.utils.data.DataLoader(
     batch_size=args.test_batch_size, shuffle=True, **kwargs)
     
     
-model = LeNet.Net()
+model = model.Net()
 #If you need to move a model to GPU via .cuda(), 
 #please do so before constructing optimizers for it. 
 #Parameters of a model after .cuda() will be different objects with those before the call.
